@@ -4,24 +4,6 @@
 
 # 机场节点订阅
 
-proxy-providers:
-
-  SSRDOG:
-    url: "http://94.103.172.47:3001/admin/download/SSRDOG?target=ClashMeta"
-    type: http
-    interval: 86400
-    health-check:
-      enable: true
-      url: https://www.gstatic.com/generate_204
-      interval: 300
-    proxy: 直连 
-     
-
-proxies:
-  - {name: 直连, type: direct}
-  - {name: 拒绝, type: reject}
-  - {"type":"vless","name":"🇭🇰 落地 RFC | 香港 01","server":"rfchk01.ljss.de","port":14513,"uuid":"e9e86219-bdba-4aff-b722-4c6378d4b8e4","tls":true,"client-fingerprint":"chrome","alpn":["h3","h2","http/1.1"],"skip-cert-verify":false,"network":"ws","ws-opts":{"headers":{"Host":"rfchk01.ljss.de"},"path":"/rfchk01"},"servername":"rfchk01.ljss.de"}
-
 
 # ========================
 # 主要端口设置
