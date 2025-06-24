@@ -3,9 +3,9 @@
 # ========================
 
 # 机场节点订阅
-proxies:
-  - {name: 直连, type: direct}
-  - {name: 拒绝, type: reject}
+# proxies:
+#   - {name: 直连, type: direct}
+#   - {name: 拒绝, type: reject}
 
 # ========================
 # 主要端口设置
@@ -73,7 +73,6 @@ default: &default
     - 日本-自动
     - 韩国-自动
     - 美国-自动
-
     # 兜底
     - 拒绝
 # 按地区筛选
