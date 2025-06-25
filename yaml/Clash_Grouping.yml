@@ -143,7 +143,7 @@ rules:
   - RULE-SET,TikTok / Domain,👯‍♂️ TikTok
   - RULE-SET,Netflix / Domain,📀 流媒体
   - RULE-SET,Disney / Domain,📀 流媒体
-  - RULE-SET,Youtube / Domain,📀 流媒体
+  - RULE-SET,Youtube / Domain,📺 YouTube
   - RULE-SET,Apple-CN / Domain,🍎 Apple
   - RULE-SET,Apple / Domain,🍎 Apple
   - RULE-SET,onedrive_domain,🐬 OneDrive
