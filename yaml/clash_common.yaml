@@ -247,6 +247,6 @@ rule-providers:
 # ========================
 # 其他 rule-providers
   Custom_Proxy: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/Heart0510/Clash_rule_file_repository/refs/heads/main/rules/Agency_Rules.list"}
-  Custom_Direct: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/Heart0510/Clash_rule_file_repository/refs/heads/main/rules/Direct_rules.list"}
+  Custom_Direct: {<<: *class, url: "https://raw.githubusercontent.com/Heart0510/Clash_rule_file_repository/refs/heads/main/rules/Direct_rules.list"}
   TEST / Domain: {<<: *class, url: "https://github.moeyy.xyz/https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Check.list"}
    
