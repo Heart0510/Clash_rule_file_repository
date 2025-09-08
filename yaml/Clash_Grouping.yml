@@ -115,7 +115,7 @@ proxy-groups:
   - {name: 落地选择, <<: *Select, filter: *FilterLanding, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Global.png}
   - {name: 所有-手动, <<: *Select, filter: *FilterAll, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Static.png}
   - {name: 所有-自动, <<: *Auto,   icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Urltest.png}
-  - {name: 直连&自建, <<: *Select, filter: *FilterSelfBuilt, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Direct.png}
+  - {name: 直连-自建, <<: *Select, filter: *FilterSelfBuilt, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Direct.png}
   # 自动选择 - 按地区
   - {name: 香港-自动, <<: *Auto, filter: *FilterHK, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/HK.png}
   - {name: 日本-自动, <<: *Auto, filter: *FilterJP, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/JP.png}
