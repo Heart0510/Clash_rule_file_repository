@@ -109,6 +109,8 @@ proxy-groups:
   - {name: 🌍 国外,       <<: *default}
   - {name: ➡️ 国内,       <<: *default}
   - {name: 🐟 漏网之鱼,   <<: *default}
+  # 新增 Emby 分组
+  - {name: 🎞 Emby, <<: *Select, filter: *FilterSelfBuilt, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Streaming.png} # 使用Streaming图标，或可自定义
 
   # 特殊分组
   - {name: 中继选择, <<: *Select, filter: *FilterAll, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Final.png}
@@ -128,6 +130,8 @@ proxy-groups:
 # 规则引擎（rules）
 # ========================
 rules:
+  # 新增 Emby 规则 (放置在业务规则中靠前的位置，确保Emby流量先被匹配)
+  - RULE-SET,Emby / Domain,🎞 Emby
   # 域名相关规则
   - RULE-SET,ChatGPT / Domain,🤖 AI
   - RULE-SET,Claude / Domain,🤖 AI
@@ -179,6 +183,8 @@ rule-anchor:
 
 # 域名相关 rule-providers
 rule-providers:
+  # 新增 Emby 规则提供者
+  Emby / Domain: {<<: *class, url: "https://raw.githubusercontent.com/Heart0510/Clash_rule_file_repository/refs/heads/main/rules/Emby_Domain.list"}
   ChatGPT / Domain: {<<: *domain, url: "https://gh-proxy.com/https://github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/openai.mrs"}
   Claude / Domain: {<<: *class, url: "https://gh-proxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Claude/Claude.list"}
   Meta AI / Domain: {<<: *class, url: "https://gh-proxy.com/https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/MetaAi.list"}
@@ -187,7 +193,7 @@ rule-providers:
   GitHub / Domain: {<<: *domain, url: "https://gh-proxy.com/https://github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/github.mrs"}
   Telegram / Domain: {<<: *domain, url: "https://gh-proxy.com/https://github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/telegram.mrs"}
   Twitter / Domain: {<<: *domain, url: "https://gh-proxy.com/https://github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/x.mrs"}
-  Facebook / Domain: {<<: *domain, url: "https://gh-proxy.com/https://github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/facebook.mrs"}
+  Facebook / Domain: {<<: *domain, url: "https://gh-proxy.com/https://github.metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/facebook.mrs"}
   Apple-CN / Domain: {<<: *domain, url: "https://gh-proxy.com/https://github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/apple-cn.mrs"}
   Apple / Domain: {<<: *domain, url: "https://gh-proxy.com/https://github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/apple.mrs"}
   onedrive_domain: {<<: *domain, url: "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/onedrive.mrs"}
@@ -217,4 +223,3 @@ rule-providers:
   Custom_Proxy: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/Heart0510/Clash_rule_file_repository/refs/heads/main/rules/Agency_Rules.list"}
   Custom_Direct: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/Heart0510/Clash_rule_file_repository/refs/heads/main/rules/Direct_rules.list"}
   TEST / Domain: {<<: *class, url: "https://gh-proxy.com/https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Check.list"}
-   
