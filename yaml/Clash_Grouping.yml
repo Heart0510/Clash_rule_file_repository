@@ -130,14 +130,20 @@ proxy-groups:
 # 规则引擎（rules）
 # ========================
 rules:
-  # 新增 Emby 规则 (放置在业务规则中靠前的位置，确保Emby流量先被匹配)
+  # 内网优先；保留 Emby 与 Bing/Copilot 的专门策略。
+  # 自定义规则覆盖公共分类；测试网站交给 Test 分组。
+  - RULE-SET,Private / IP,DIRECT,no-resolve
+  - RULE-SET,Private / Domain,DIRECT
   - RULE-SET,Emby / Domain,🎞 Emby
-  # 域名相关规则
+  - RULE-SET,Copilot / Domain,🤖 AI
+  - RULE-SET,Custom_Direct,DIRECT
+  - RULE-SET,Custom_Proxy,🌍 国外
+  - RULE-SET,TEST / Domain,🛠 Test
   - RULE-SET,ChatGPT / Domain,🤖 AI
   - RULE-SET,Claude / Domain,🤖 AI
   - RULE-SET,Meta AI / Domain,🤖 AI
-  - RULE-SET,Copilot / Domain,🤖 AI
   - RULE-SET,Gemini / Domain,🤖 AI
+  - RULE-SET,AI / Domain,🤖 AI
   - RULE-SET,GitHub / Domain,📘 GitHub
   - RULE-SET,Telegram / Domain,🙋 Telegram
   - RULE-SET,Twitter / Domain,🚀 默认代理
@@ -153,24 +159,18 @@ rules:
   - RULE-SET,Apple-CN / Domain,🍎 Apple
   - RULE-SET,Apple / Domain,🍎 Apple
   - RULE-SET,onedrive_domain,🐬 OneDrive
+  - RULE-SET,Microsoft-CN / Domain,DIRECT
   - RULE-SET,Microsoft / Domain,🪟 Microsoft
   - RULE-SET,Google / Domain,🍀 Google
+  - RULE-SET,Steam-CN / Domain,➡️ 国内
   - RULE-SET,Proxy / Domain,🚀 默认代理
   - RULE-SET,Globe / Domain,🌍 国外
-  - RULE-SET,Custom_Proxy,🌍 国外
   - RULE-SET,Direct / Domain,DIRECT
   - RULE-SET,China / Domain,➡️ 国内
-  - RULE-SET,Private / Domain,DIRECT
-  - RULE-SET,Custom_Direct,DIRECT
-  - RULE-SET,TEST / Domain,🚀 默认代理
-
-  # IP相关规则
   - RULE-SET,Telegram / IP,🙋 Telegram,no-resolve
   - RULE-SET,Netflix / IP,📀 流媒体,no-resolve
   - RULE-SET,Google / IP,🍀 Google,no-resolve
   - RULE-SET,China / IP,➡️ 国内,no-resolve
-
-  # 兜底
   - MATCH,🐟 漏网之鱼
 
 # ========================
@@ -193,7 +193,7 @@ rule-providers:
   GitHub / Domain: {<<: *domain, url: "https://gh-proxy.com/https://github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/github.mrs"}
   Telegram / Domain: {<<: *domain, url: "https://gh-proxy.com/https://github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/telegram.mrs"}
   Twitter / Domain: {<<: *domain, url: "https://gh-proxy.com/https://github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/x.mrs"}
-  Facebook / Domain: {<<: *domain, url: "https://gh-proxy.com/https://github.metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/facebook.mrs"}
+  Facebook / Domain: {<<: *domain, url: "https://gh-proxy.com/https://github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/facebook.mrs"}
   Apple-CN / Domain: {<<: *domain, url: "https://gh-proxy.com/https://github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/apple-cn.mrs"}
   Apple / Domain: {<<: *domain, url: "https://gh-proxy.com/https://github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geosite/apple.mrs"}
   onedrive_domain: {<<: *domain, url: "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/onedrive.mrs"}
@@ -220,6 +220,37 @@ rule-providers:
   Google / IP: {<<: *ip, url: "https://gh-proxy.com/https://github.com/metacubex/meta-rules-dat/raw/refs/heads/meta/geo/geoip/google.mrs"}
 
 # 其他 rule-providers
-  Custom_Proxy: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/Heart0510/Clash_rule_file_repository/refs/heads/main/rules/Agency_Rules.list"}
-  Custom_Direct: {<<: *class, url: "https://gh-proxy.com/raw.githubusercontent.com/Heart0510/Clash_rule_file_repository/refs/heads/main/rules/Direct_rules.list"}
-  TEST / Domain: {<<: *class, url: "https://gh-proxy.com/https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/Check.list"}
+  Custom_Proxy: {<<: *class, url: "https://gh-proxy.com/https://raw.githubusercontent.com/Heart0510/Clash_rule_file_repository/refs/heads/main/rules/Agency_Rules.list"}
+  Custom_Direct: {<<: *class, url: "https://gh-proxy.com/https://raw.githubusercontent.com/Heart0510/Clash_rule_file_repository/refs/heads/main/rules/Direct_rules.list"}
+  # 仅匹配明确的测速/IP 查询站点，不接管 Cloudflare 验证或整个公共托管域名。
+  TEST / Domain:
+    type: inline
+    behavior: classical
+    payload:
+      - DOMAIN-SUFFIX,ip.sb
+      - DOMAIN-SUFFIX,ipinfo.io
+      - DOMAIN-SUFFIX,ip-api.com
+      - DOMAIN-SUFFIX,ipip.net
+      - DOMAIN-SUFFIX,ipw.cn
+      - DOMAIN-SUFFIX,ipcheck.im
+      - DOMAIN-SUFFIX,ipcheck.ing
+      - DOMAIN-SUFFIX,ipify.org
+      - DOMAIN-SUFFIX,ifconfig.me
+      - DOMAIN-SUFFIX,ipleak.net
+      - DOMAIN-SUFFIX,dnsleaktest.com
+      - DOMAIN-SUFFIX,dnsleaktest.org
+      - DOMAIN-SUFFIX,browserleaks.com
+      - DOMAIN-SUFFIX,browserleaks.org
+      - DOMAIN-SUFFIX,browserleaks.net
+      - DOMAIN-SUFFIX,whoer.net
+      - DOMAIN-SUFFIX,browserscan.net
+      - DOMAIN-SUFFIX,ping0.cc
+      - DOMAIN-SUFFIX,speedtest.net
+      - DOMAIN-SUFFIX,speedtest.cn
+      - DOMAIN-SUFFIX,fast.com
+      - DOMAIN-SUFFIX,test-ipv6.com
+      - DOMAIN,speed.cloudflare.com
+  Private / IP: {<<: *ip, url: "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs"}
+  AI / Domain: {<<: *domain, url: "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.mrs"}
+  Microsoft-CN / Domain: {<<: *domain, url: "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft@cn.mrs"}
+  Steam-CN / Domain: {<<: *domain, url: "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/steam@cn.mrs"}
