@@ -1,9 +1,7 @@
-DOMAIN-KEYWORD,v2rayssr.com
-DOMAIN-KEYWORD,jiedm.com
-DOMAIN-KEYWORD,missav.live
+DOMAIN-SUFFIX,v2rayssr.com
+DOMAIN-SUFFIX,jiedm.com
+DOMAIN-SUFFIX,missav.live
 DOMAIN-SUFFIX,hdhive.online
 DOMAIN-SUFFIX,cursor.sh
-DOMAIN-KEYWORD,tracker.cinefiles.info,DIR
-DOMAIN-KEYWORD,hetzner.com
-DOMAIN-KEYWORD,nodeseek.com
-
+DOMAIN-SUFFIX,hetzner.com
+DOMAIN-SUFFIX,nodeseek.com
