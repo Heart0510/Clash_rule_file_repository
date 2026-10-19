@@ -1,24 +1,16 @@
+# Bing 和 Copilot 由模板中的 Copilot 规则交给 AI 分组。
+# PT 采用明确的站点/Tracker 域名，避免通用关键词误匹配。
 DOMAIN-SUFFIX,netcup.com
-DOMAIN-SUFFIX,bing.com
-DOMAIN-KEYWORD,139.com
-DOMAIN-KEYWORD,gwvpsceping.com
-DOMAIN-KEYWORD,ai.rcouyi.com
-DOMAIN-KEYWORD,fiat24.com
-DOMAIN-KEYWORD,top1000.939593.xyz
-DOMAIN-KEYWORD,xiaohumini.site
-DOMAIN-KEYWORD,raylink.live
-DOMAIN-KEYWORD,chat.xiaohuapi.site
-DOMAIN-KEYWORD,tracker.m-team.cc
-DOMAIN-KEYWORD,claude.hubp.de
-DOMAIN-KEYWORD,songshu0510.top
-
-DOMAIN-KEYWORD,announce
-DOMAIN-KEYWORD,torrent
-DOMAIN-KEYWORD,tracker
-DOMAIN-KEYWORD,peer_id=
-DOMAIN-KEYWORD,info_hash
-DOMAIN-KEYWORD,get_peers
-DOMAIN-KEYWORD,find_node
+DOMAIN-SUFFIX,139.com
+DOMAIN-SUFFIX,gwvpsceping.com
+DOMAIN,ai.rcouyi.com
+DOMAIN-SUFFIX,fiat24.com
+DOMAIN,top1000.939593.xyz
+DOMAIN-SUFFIX,xiaohumini.site
+DOMAIN-SUFFIX,raylink.live
+DOMAIN,chat.xiaohuapi.site
+DOMAIN,claude.hubp.de
+DOMAIN-SUFFIX,songshu0510.top
 DOMAIN-SUFFIX,agsvpt.cn
 DOMAIN-SUFFIX,audiences.me
 DOMAIN-SUFFIX,cinefiles.info
